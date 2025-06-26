@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>خريطة الحب</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg" />
+</audio>
+
+<main>
+  <!-- الخط العمودي والأسباب -->
+  <div id="scroll-container">
+    <svg id="line" height="3000" width="4">
+      <line x1="2" y1="0" x2="2" y2="3000" stroke="#2563eb" stroke-width="4"/>
+    </svg>
+    <div id="reasons-container"></div>
+  </div>
+
+  <!-- اختيار القلوب -->
+  <div id="choose-heart" class="hidden">
+    <p>اختر قلبًا 💙</p>
+    <div class="hearts">
+      <div id="heart1">💙</div>
+      <div id="heart2">💜</div>
+    </div>
+  </div>
+
+  <!-- شجرة القلب -->
+  <div id="tree-container">
+    <svg id="heart-tree" viewBox="0 0 300 300" width="300">
+      <!-- الجذع -->
+      <path id="tree-trunk" d="M140 300 C140 250, 160 250, 160 300 Z" fill="#1e3a8a" />
+
+      <!-- الفروع -->
+      <path class="tree-branch" d="M150 250 C130 220, 100 190, 80 150" stroke="#3b82f6" stroke-width="3" fill="none"/>
+      <path class="tree-branch" d="M150 250 C160 220, 190 190, 210 150" stroke="#3b82f6" stroke-width="3" fill="none"/>
+      <path class="tree-branch" d="M140 230 C110 200, 90 170, 70 130" stroke="#60a5fa" stroke-width="2.5" fill="none"/>
+      <path class="tree-branch" d="M160 230 C190 200, 210 170, 230 130" stroke="#60a5fa" stroke-width="2.5" fill="none"/>
+
+      <!-- أوراق قلوب -->
+      <g id="heart-leaves" fill="#3b82f6">
+        <path d="M90 130 Q85 120, 95 115 Q105 120, 100 130 Z" />
+        <path d="M210 130 Q215 120, 205 115 Q195 120, 200 130 Z" />
+        <path d="M70 110 Q65 100, 75 95 Q85 100, 80 110 Z" />
+        <path d="M230 110 Q235 100, 225 95 Q215 100, 220 110 Z" />
+        <path d="M150 100 Q145 90, 155 85 Q165 90, 160 100 Z" />
+      </g>
+
+      <!-- الاسم داخل القلب -->
+      <text x="150" y="160" id="heart-name" text-anchor="middle"
+            fill="#1e3a8a" font-size="18" font-weight="bold" opacity="0">بيسو</text>
+    </svg>
+  </div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
