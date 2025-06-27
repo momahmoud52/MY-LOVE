@@ -5,28 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>بسكونة قلبي</title>
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
 
-<audio autoplay loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg" />
+<!-- الموسيقى -->
+<audio id="bg-music" autoplay loop muted playsinline>
+  <source src="love-romantic-hopeful-background-music-363709.mp3" type="audio/mpeg" />
 </audio>
 
+<!-- خلفية القلوب العائمة -->
+<div id="background-hearts"></div>
+
 <main>
-  <div id="scroll-container">
+  <!-- الخط العمودي وأسباب الحب -->
+  <section id="scroll-container">
     <svg id="line" height="4000" width="4">
-      <line x1="2" y1="0" x2="2" y2="4000" stroke="#2563eb" stroke-width="4"/>
+      <line x1="2" y1="0" x2="2" y2="4000" stroke="#2563eb" stroke-width="4" />
     </svg>
     <div id="reasons-container"></div>
-  </div>
+  </section>
 
+  <!-- اختيار القلوب -->
   <section id="choose-heart" class="hidden">
-    <p>اختر قلبًا 💙</p>
+    <h2>اختر قلبًا 💙</h2>
     <div class="hearts"></div>
   </section>
 
+  <!-- عرض الشجرة -->
   <section id="tree-container">
-    <div id="lottie-tree"></div>
+    <div id="lottie-tree" class="music-pulse"></div>
     <div id="tree-name"></div>
     <div id="tree-stats">
       <p><strong>القلوب التي تم اختيارها:</strong> <span id="count">0</span></p>
@@ -35,9 +46,15 @@
   </section>
 </main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.9.6/lottie.min.js"></script>
-<script src="script.js"></script>
+<script>
+window.addEventListener("DOMContentLoaded", () => {
+  const music = document.getElementById("bg-music");
+  music.muted = false;
+  music.play().catch(() => {
+    console.log("🔇 يجب التفاعل لتشغيل الموسيقى تلقائيًا.");
+  });
+});
+</script>
+
 </body>
 </html>
