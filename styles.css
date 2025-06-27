@@ -1,9 +1,9 @@
-/* styles.css */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: 'Cairo', sans-serif;
   background: linear-gradient(to bottom, #e0f2fe, #bfdbfe);
@@ -12,7 +12,7 @@ body {
 
 #scroll-container {
   position: relative;
-  height: 3200px;
+  height: 4000px;
   width: 100%;
 }
 
@@ -57,21 +57,47 @@ body {
 .hearts {
   display: flex;
   justify-content: center;
-  gap: 2rem;
-  font-size: 3rem;
+  gap: 1.5rem;
+  font-size: 2.5rem;
   padding-top: 1rem;
+  cursor: pointer;
+  flex-wrap: wrap;
+}
+
+.heart {
   cursor: pointer;
 }
 
 #tree-container {
   display: none;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  min-height: 400px;
   padding: 3rem 1rem;
 }
 
-#heart-tree path,
-#heart-tree text {
+#lottie-tree {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+#tree-name {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  color: #1e3a8a;
   opacity: 0;
+  text-align: center;
+}
+
+#tree-stats {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #1e3a8a;
+  line-height: 1.8;
+}
+
+#names-list {
+  display: inline-block;
+  direction: rtl;
 }

@@ -1,26 +1,35 @@
-// script.js
 gsap.registerPlugin(ScrollTrigger);
 
 const reasons = [
-  "أحبك لأنك تضيئين حياتي 💡",
-  "أحبك لحنانك المتدفق 🥰",
-  "أحبك لبسمتك الدائمة 😊",
-  "أحبك لأنك تسمعينني 👂",
-  "أحبك لأنك قوتي 💪",
-  "أحبك لعفويتك البريئة 🧸",
-  "أحبك لأنك صديقتي قبل حبيبتي 🫂",
-  "أحبك لصبرك واحتوائك 🕊️",
-  "أحبك لحكمتك في كل موقف 🧠",
-  "أحبك لدعمك لي دومًا 🙌",
-  "أحبك لاهتمامك الصادق 💌",
-  "أحبك لأنك عالمي كله 🌍",
-  "أحبك لأني لا أستطيع بدونك 💞",
-  "أحبك لأنك تملئين قلبي ❤️",
-  "أحبك... لأنك أنتِ 💙"
+  "✨ أحبك لأنك النور في عتمتي",
+  "😊 أحبك لضحكتك التي تحيي قلبي",
+  "🕊️ أحبك لصبرك واحتوائك",
+  "💞 أحبك لأنك صديقتي قبل أن تكوني حبيبتي",
+  "🔥 أحبك لدفء كلماتك في برد أيامي",
+  "🎧 أحبك لأنك تهمسين في صمتي",
+  "💗 أحبك لحنيتك التي لا تنتهي",
+  "👀 أحبك لأنك تفهمينني دون كلام",
+  "🌍 أحبك لعينيك اللتين تُغنياني عن العالم",
+  "🌼 أحبك لجمالك الطبيعي والبساطة",
+  "💧 أحبك لوجودك الذي يرويني",
+  "🎈 أحبك لأنك سر سعادتي",
+  "🎶 أحبك لصوتك الذي يطمئن قلبي",
+  "🚀 أحبك لأنك تدفعينني للأفضل",
+  "🍁 أحبك لأنك فصلي المفضل",
+  "🌸 أحبك لأنك تجعلين عالمي أجمل",
+  "❤️ أحبك لأنك الحنان كله",
+  "🛡️ أحبك لأنك الأمان في خوفي",
+  "💘 أحبك لحبك الكبير لي",
+  "💍 أحبك لأنك معي، وهنا يكفي",
+  "📷 أحبك لذكرياتنا الجميلة",
+  "🫀 أحبك لأنك نبضي في كل نبضة",
+  "🤪 أحبك لجنونك الذي أعشقه",
+  "✨ أحبك لأنك الحلم الذي تحقق",
+  "💙 أحبك فقط لأنك... أنتِ"
 ];
 
 const reasonsContainer = document.getElementById("reasons-container");
-const spacing = 3000 / (reasons.length + 1);
+const spacing = 4000 / (reasons.length + 1);
 
 reasons.forEach((text, index) => {
   const y = (index + 1) * spacing;
@@ -53,27 +62,38 @@ ScrollTrigger.create({
   onEnter: () => document.getElementById("choose-heart").classList.remove("hidden")
 });
 
-const showTree = () => {
-  const tree = document.getElementById("tree-container");
-  tree.style.display = "flex";
+const heartNames = ["زوجتي", "كتكوتي", "بوسي", "بسبوستي", "بسكوتي", "بيسو"];
+let clickCount = 0;
+const shownNames = new Set();
 
-  const parts = document.querySelectorAll("#heart-tree path, #heart-tree text");
+heartNames.forEach(name => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "💙";
+  heart.onclick = () => showTree(name);
+  document.querySelector(".hearts").appendChild(heart);
+});
 
-  gsap.to(parts, {
-    opacity: 1,
-    stagger: 0.25,
-    duration: 1.2,
-    ease: "power2.out"
+function showTree(name) {
+  const treeContainer = document.getElementById("tree-container");
+  const treeName = document.getElementById("tree-name");
+  treeContainer.style.display = "flex";
+  treeContainer.scrollIntoView({ behavior: "smooth" });
+
+  treeName.innerText = name;
+  clickCount++;
+  shownNames.add(name);
+
+  document.getElementById("count").innerText = clickCount;
+  document.getElementById("names-list").innerText = Array.from(shownNames).join("، ");
+
+  lottie.loadAnimation({
+    container: document.getElementById("lottie-tree"),
+    path: "https://assets7.lottiefiles.com/packages/lf20_pj6becjw.json",
+    renderer: "svg",
+    loop: false,
+    autoplay: true
+  }).addEventListener("complete", () => {
+    gsap.to(treeName, { opacity: 1, duration: 1 });
   });
-
-  gsap.to("#heart-name", {
-    delay: parts.length * 0.25,
-    opacity: 1,
-    scale: 1.2,
-    duration: 1,
-    ease: "back.out(1.7)"
-  });
-};
-
-document.getElementById("heart1").onclick =
-document.getElementById("heart2").onclick = showTree;
+}
